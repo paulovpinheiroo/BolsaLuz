@@ -296,66 +296,66 @@
         </div>
     </section>
     <!-- FORMULÁRIO: SIMULAR AGORA -->
-    <section id="simular" class="scroll-mt-24 py-20 bg-slate-50 dark:bg-slate-800">
+    <section id="simular" class="scroll-mt-20 py-8 sm:py-20 bg-slate-50 dark:bg-slate-800">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-700 p-6 sm:p-10 md:p-16">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-700 p-5 sm:p-10 md:p-16">
 
-                <div class="text-center mb-10">
+                <div class="text-center mb-4 sm:mb-10">
                     <div
-                        class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-laranja-50 dark:bg-laranja-900/20 mb-8">
+                        class="hidden sm:inline-flex items-center justify-center w-20 h-20 rounded-full bg-laranja-50 dark:bg-laranja-900/20 mb-8">
                         <i data-lucide="calculator" class="w-10 h-10 text-laranja-600"></i>
                     </div>
 
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-azul-950 dark:text-white leading-tight mb-4">
+                    <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold text-azul-950 dark:text-white leading-tight mb-2 sm:mb-4">
                         Simule seu Crédito no<br>
                         <span class="text-laranja-600">Bolsa Família</span>
                     </h2>
 
-                    <p class="text-lg text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed">
+                    <p class="hidden sm:block text-lg text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed">
                         Preencha seus dados e descubra seu limite em poucos minutos. Rápido, seguro e 100% online.
                     </p>
                 </div>
 
-                <form id="form-proposta" class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <form id="form-proposta" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 text-left">
                     <div>
                         <label for="cpf"
-                            class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">CPF do titular
+                            class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1.5 sm:mb-2">CPF do titular
                             <span class="text-red-500">*</span></label>
                         <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14"
                             inputmode="numeric" required
-                            class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-laranja-500">
+                            class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3.5 py-2.5 sm:px-4 sm:py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-laranja-500">
                     </div>
 
                     <div>
                         <label for="nome"
-                            class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Nome completo
+                            class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1.5 sm:mb-2">Nome completo
                             <span class="text-red-500">*</span></label>
                         <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required
-                            class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-laranja-500">
+                            class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3.5 py-2.5 sm:px-4 sm:py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-laranja-500">
                     </div>
 
                     <div>
                         <label for="nascimento"
-                            class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Data de
+                            class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1.5 sm:mb-2">Data de
                             aniversário <span class="text-red-500">*</span></label>
                         <input type="date" id="nascimento" name="nascimento" required
-                            class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-laranja-500">
+                            class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3.5 py-2.5 sm:px-4 sm:py-3 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-laranja-500">
                     </div>
 
                     <div>
                         <label for="telefone"
-                            class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Celular /
+                            class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1.5 sm:mb-2">Celular /
                             WhatsApp <span class="text-red-500">*</span></label>
                         <input type="tel" id="telefone" name="telefone" placeholder="(85) 99999-9999" maxlength="15"
                             inputmode="numeric" required
-                            class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-laranja-500">
+                            class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3.5 py-2.5 sm:px-4 sm:py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-laranja-500">
                     </div>
 
                     <div class="md:col-span-2">
                         <span
                             class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3">Qual é o valor do
                             seu benefício? <span class="text-red-500">*</span></span>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="grid grid-cols-2 gap-2 sm:gap-3">
                             <label class="opcao-faixa">
                                 <input type="radio" name="beneficio" value="ate350">
                                 <span>Até R$350</span>
@@ -372,13 +372,13 @@
 
                     <div class="md:col-span-2">
                         <button type="submit"
-                            class="w-full inline-flex items-center justify-center gap-3 bg-laranja-600 hover:bg-laranja-700 text-white text-lg px-8 py-4 rounded-xl font-bold uppercase tracking-wider transition shadow-lg">
-                            <i data-lucide="calculator" class="w-5 h-5"></i> Simular Proposta
+                            class="w-full inline-flex items-center justify-center gap-3 bg-laranja-600 hover:bg-laranja-700 text-white text-base sm:text-lg px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl font-bold uppercase tracking-wider transition shadow-lg">
+                            <i data-lucide="calculator" class="w-5 h-5 hidden sm:inline"></i> Simular Proposta
                         </button>
                     </div>
 
                     <div
-                        class="md:col-span-2 flex flex-wrap justify-center gap-6 text-sm text-slate-500 dark:text-slate-400">
+                        class="md:col-span-2 hidden sm:flex flex-wrap justify-center gap-6 text-sm text-slate-500 dark:text-slate-400">
                         <span class="flex items-center gap-2">
                             <i data-lucide="shield-check" class="w-4 h-4 text-laranja-600"></i> 100% Seguro
                         </span>
