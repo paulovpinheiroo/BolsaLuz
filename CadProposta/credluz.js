@@ -3,9 +3,8 @@ var credluz =
         var CHAVE_PROPOSTAS = 'credluz_propostas';
         var CHAVE_TEMA = 'credluz-tema';
         var FAIXAS = {
-            ate399: { rotulo: 'Até R$399', minimo: 0, elegivel: false },
-            de400a750: { rotulo: 'R$400 a R$750', minimo: 400, elegivel: true },
-            acima750: { rotulo: 'Mais de R$750', minimo: 750, elegivel: true }
+            ate350: { rotulo: 'Até R$350', minimo: 0, elegivel: false },
+            acima400: { rotulo: 'Acima de R$400', minimo: 400, elegivel: true }
         };
 
         function mascaraCPF(campo) {
@@ -186,7 +185,7 @@ var credluz =
 
         return {
             iniciar: iniciar,
-            FAIXAS_ORDEM: ['ate399', 'de400a750', 'acima750'],
+            FAIXAS_ORDEM: ['ate350', 'acima400'],
             FAIXAS: FAIXAS,
             pegarPropostas: pegarPropostas,
             salvarPropostas: salvarPropostas,
