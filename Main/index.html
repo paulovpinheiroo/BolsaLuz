@@ -36,9 +36,6 @@
         rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Estilos Choices.js -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
-
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
@@ -255,435 +252,45 @@
             </div>
         </div>
     </section>
-    <style>
-        #card-simulacao {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Classe para fullscreen mobile/tablet */
-        .form-fullscreen {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
-            z-index: 99 !important;
-            border-radius: 0 !important;
-            border-top: none !important;
-            overflow-y: auto !important;
-            background-color: white !important;
-            padding-top: env(safe-area-inset-top) !important;
-        }
-
-        .dark .form-fullscreen {
-            background-color: #0f172a !important;
-        }
-
-        /* Oculta elementos quando o formulário estiver em fullscreen no mobile */
-        .form-fullscreen .ocultar-em-fullscreen {
-            display: none !important;
-        }
-
-        /* Ajuste de erro do jQuery Validate */
-        .error-span {
-            display: block;
-            margin-top: 4px;
-            font-size: 0.75rem;
-            font-style: italic;
-            color: #ef4444;
-        }
-
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
-
-    <!-- FORMULÁRIO DE SIMULAÇÃO -->
+    <!-- CTA: SIMULAR AGORA -->
     <section id="simular" class="py-20 bg-slate-50 dark:bg-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:col-span-2 space-y-0">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-700 p-10 md:p-16">
 
-                <!-- Info Lateral -->
-                <div
-                    class="lg:col-span-2 space-y-8 md:hidden mb-12 pb-12 border-b border-slate-200 dark:border-slate-700 ">
-                    <div>
-                        <h3 class="text-laranja-600 font-bold uppercase tracking-wider mb-2">Simulação Gratuita</h3>
-                        <h2 class="text-3xl font-extrabold text-azul-950 dark:text-white leading-tight mb-4">
-                            Cadastro Simplificado
-                        </h2>
-                        <p class="text-slate-600 dark:text-slate-400">
-                            Utilizamos tecnologia de ponta para proteger suas informações. Sua simulação é processada
-                            instantaneamente.
-                        </p>
-                    </div>
-
-                    <div class="space-y-4">
-                        <div class="flex items-start gap-4">
-                            <div
-                                class="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-lg text-azul-600 dark:text-azul-400">
-                                <i data-lucide="shield-check" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-azul-950 dark:text-white">100% Seguro</h4>
-                                <p class="text-sm text-slate-500">Seus dados são criptografados.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div
-                                class="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-lg text-azul-600 dark:text-azul-400">
-                                <i data-lucide="zap" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-azul-950 dark:text-white">Resposta Rápida</h4>
-                                <p class="text-sm text-slate-500">Análise em poucos segundos.</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-laranja-50 dark:bg-laranja-900/20 mb-8">
+                    <i data-lucide="calculator" class="w-10 h-10 text-laranja-600"></i>
                 </div>
 
-                <!-- CARD DO FORMULÁRIO -->
-                <div class="lg:col-span-3" id="formulario_proposta">
-                    <div id="card-simulacao"
-                        class="w-full bg-white dark:bg-slate-900 pb-8 pt-0 rounded-2xl shadow-xl border-t-6 border-orange-600">
-                        <div class="ocultar-em-fullscreen">
-                            <h1 class="text-center text-xl bg-orange-600 w-full rounded-t-lg p-1 text-white">Liberação
-                                em até 3 horas!</h1>
-                        </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-azul-950 dark:text-white leading-tight mb-4">
+                    Simule seu Crédito no<br>
+                    <span class="text-laranja-600">Bolsa Família</span>
+                </h2>
 
-                        <div class="w-full px-1 ocultar-em-fullscreen">
-                            <h1
-                                class="md:block text-center text-azul-950 dark:text-white text-2xl mt-4 font-bold mb-2 md:mt-5">
-                                Empréstimo Consignado no Bolsa Família
-                            </h1>
-                            <h2 class="text-center text-xs">Saiba qual <strong>valor</strong> pode ser liberado pra você
-                                em <strong>minutos.</strong></h2>
-                        </div>
+                <p class="text-lg text-slate-600 dark:text-slate-300 mb-10 max-w-xl mx-auto leading-relaxed">
+                    Descubra seu limite em poucos minutos. As parcelas podem ser descontadas
+                    direto do seu benefício. Rápido, seguro e 100% online.
+                </p>
 
-                        <!-- Header Mobile Fullscreen -->
-                        <div id="form-header"
-                            class="hidden bg-slate-50 dark:bg-slate-800 p-4 items-center justify-between border-b dark:border-slate-700 mb-1 md:mb-6 lg:rounded-none"
-                            style="margin-top: 1px;">
-                            <div class="flex items-center gap-2">
-                                <i data-lucide="calculator" class="text-orange-600 w-5 h-5"></i>
-                                <span class="font-bold text-slate-900 dark:text-white text-sm uppercase">Simular
-                                    Proposta</span>
-                            </div>
-                            <button type="button" onclick="toggleFullscreen(false)"
-                                class="p-2 text-slate-400 hover:text-orange-600 transition">
-                                <i data-lucide="chevron-down" class="w-6 h-6"></i>
-                            </button>
-                        </div>
+                <a href="../CadProposta/Proposta.html"
+                    class="inline-flex items-center justify-center gap-3 bg-laranja-600 hover:bg-laranja-700 text-white text-xl px-12 py-5 rounded-2xl font-extrabold transition-all shadow-lg hover:shadow-2xl uppercase tracking-wider transform hover:scale-105 active:scale-95 duration-200">
+                    <i data-lucide="play" class="w-6 h-6"></i> Simular Agora
+                </a>
 
-                        <form id="formProposta" class="md:space-y-4 pt-6 px-4 md:px-6 md:pt-2">
-
-                            <!-- ========================================== -->
-                            <!-- ACESSÓRIO NOVO: CAMPOS DE RASTREAMENTO -->
-                            <!-- ========================================== -->
-                            <input type="hidden" name="utm_source" id="utm_source" value="">
-                            <input type="hidden" name="utm_medium" id="utm_medium" value="">
-                            <input type="hidden" name="utm_campaign" id="utm_campaign" value="">
-                            <input type="hidden" name="utm_content" id="utm_content" value="">
-                            <input type="hidden" name="utm_term" id="utm_term" value="">
-                            <input type="hidden" name="gclid" id="gclid" value="">
-                            <input type="hidden" name="fbclid" id="fbclid" value="">
-                            <input type="hidden" name="referrer" id="referrer" value="">
-                            <input type="hidden" name="programa" id="programa" value="bolsa_familia">
-                            <!-- ========================================== -->
-
-                            <!-- SEÇÃO 1: DADOS PESSOAIS -->
-                            <div class="grid grid-cols-2 gap-3 md:gap-3.5">
-                                <div class="col-span-2 hidden md:block">
-                                    <h2
-                                        class="text-xs md:text-sm font-bold text-azul-900 dark:text-white flex items-center gap-2 border-b border-gray-100 dark:border-slate-800 pb-1">
-                                        <i data-lucide="user" class="text-laranja-600 w-4 h-4"></i> Dados Pessoais
-                                    </h2>
-                                </div>
-
-                                <div class="col-span-2 md:col-span-1 flex flex-col">
-                                    <label for="nome"
-                                        class="mb-0.5 font-semibold text-[14px] md:text-xs text-gray-600 dark:text-white">Nome
-                                        Completo *</label>
-                                    <input type="text" id="nome" name="nome" placeholder="Nome completo" required
-                                        class="p-2 md:p-2.5 text-base md:text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-azul-800 focus:ring-1 focus:ring-azul-800 transition-colors bg-white dark:bg-azul-100 dark:text-azul-900 dark:placeholder-azul-300">
-                                </div>
-
-                                <div class="col-span-2 md:col-span-1 flex flex-col">
-                                    <label for="cpf"
-                                        class="mb-0.5 font-semibold text-[14px] md:text-xs text-gray-600 dark:text-white">CPF
-                                        *</label>
-                                    <input type="text" inputmode="numeric" id="cpf" name="cpf"
-                                        placeholder="000.000.000-00" value="" maxlength="14" required
-                                        class="p-2 md:p-2.5 text-base md:text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-azul-800 focus:ring-1 focus:ring-azul-800 transition-colors bg-white dark:bg-azul-100 dark:text-azul-900 dark:placeholder-azul-300">
-                                </div>
-
-                                <div class="col-span-2 md:col-span-1 flex flex-col">
-                                    <label for="nascimento"
-                                        class="mb-0.5 font-semibold text-[14px] md:text-xs text-gray-600 dark:text-white">Nascimento
-                                        *</label>
-                                    <input type="tel" id="nascimento" name="nascimento" placeholder="DD/MM/AAAA"
-                                        maxlength="10" required
-                                        class="p-2 md:p-2.5 text-base md:text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-azul-800 focus:ring-1 focus:ring-azul-800 transition-colors bg-white dark:bg-azul-100 dark:text-azul-900 dark:placeholder-azul-300">
-                                </div>
-
-                                <div class="col-span-2 md:col-span-1 flex flex-col">
-                                    <label for="telefone"
-                                        class="mb-0.5 font-semibold text-[14px] md:text-xs text-gray-600 dark:text-white">Celular
-                                        / WhatsApp *</label>
-                                    <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000"
-                                        maxlength="15" required
-                                        class="p-2 md:p-2.5 text-base md:text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-azul-800 focus:ring-1 focus:ring-azul-800 transition-colors bg-white dark:bg-azul-100 dark:text-azul-900 dark:placeholder-azul-300">
-                                </div>
-
-                                <input type="hidden" id="email" name="email" placeholder="cliente@email.com" required
-                                    value="">
-                            </div>
-
-                            <!-- SEÇÃO 2: ENDEREÇO -->
-                            <div class="grid grid-cols-2 gap-3 md:gap-3.5">
-
-                                <div class="col-span-2 md:col-span-1 space-y-3">
-                                    <div class="hidden md:block">
-                                        <h2
-                                            class="text-xs md:text-sm font-bold text-azul-900 dark:text-white flex items-center gap-2 border-b border-gray-100 dark:border-slate-800 pb-1">
-                                            <i data-lucide="map-pin" class="text-laranja-600 w-4 h-4"></i> Endereço
-                                        </h2>
-                                    </div>
-
-                                    <div class="flex flex-col w-full">
-                                        <label for="cep"
-                                            class="mb-0.5 font-semibold text-[14px] md:text-xs text-gray-600 dark:text-white">CEP
-                                            *</label>
-                                        <input type="text" inputmode="numeric" id="cep" name="cep"
-                                            placeholder="00000-000" maxlength="9" required
-                                            class="p-2 md:p-2.5 text-base md:text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-azul-800 focus:ring-1 focus:ring-azul-800 transition-colors bg-white dark:bg-azul-100 dark:text-azul-900 dark:placeholder-azul-300 w-full">
-
-                                        <div class="flex flex-wrap items-center justify-between mt-1 gap-2">
-                                            <a href="#" id="linkNaoSeiCep"
-                                                class="text-[11px] md:text-[11px] text-laranja-600 hover:underline inline-flex items-center gap-1">
-                                                <i data-lucide="help-circle" class="w-3 h-3"></i> Não sei meu CEP
-                                            </a>
-                                            <div
-                                                class="text-[9px] md:text-[11px] text-gray-500 dark:text-slate-400 font-medium italic">
-                                                <span id="displayCidadeUF">-</span> <span class="mx-1">•</span> <span
-                                                    id="displayBairro">-</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="hidden">
-                                        <select id="uf" name="uf">
-                                            <option value="AC">AC</option>
-                                            <option value="AL">AL</option>
-                                            <option value="AP">AP</option>
-                                            <option value="AM">AM</option>
-                                            <option value="BA">BA</option>
-                                            <option value="CE">CE</option>
-                                            <option value="DF">DF</option>
-                                            <option value="ES">ES</option>
-                                            <option value="GO">GO</option>
-                                            <option value="MA">MA</option>
-                                            <option value="MT">MT</option>
-                                            <option value="MS">MS</option>
-                                            <option value="MG">MG</option>
-                                            <option value="PA">PA</option>
-                                            <option value="PB">PB</option>
-                                            <option value="PR">PR</option>
-                                            <option value="PE">PE</option>
-                                            <option value="PI">PI</option>
-                                            <option value="RJ">RJ</option>
-                                            <option value="RN">RN</option>
-                                            <option value="RS">RS</option>
-                                            <option value="RO">RO</option>
-                                            <option value="RR">RR</option>
-                                            <option value="SC">SC</option>
-                                            <option value="SP">SP</option>
-                                            <option value="SE">SE</option>
-                                            <option value="TO">TO</option>
-                                        </select>
-                                        <input type="hidden" id="cidade" name="cidade">
-                                        <input type="hidden" id="logradouro" name="logradouro">
-                                        <input type="hidden" id="bairro" name="bairro">
-                                        <input type="hidden" id="numero" name="numero">
-                                        <input type="hidden" id="status" name="status">
-                                    </div>
-                                </div>
-
-                                <div class="col-span-2 md:col-span-1 md:space-y-3">
-                                    <div class="hidden md:block">
-                                        <h2
-                                            class="text-xs md:text-sm font-bold text-azul-900 dark:text-white flex items-center gap-2 border-b border-gray-100 dark:border-slate-800 pb-1">
-                                            <i data-lucide="briefcase" class="text-laranja-600 w-4 h-4"></i>
-                                            Profissional
-                                        </h2>
-                                    </div>
-
-                                    <div class="flex flex-col">
-                                        <label for="ocupacao"
-                                            class="mb-0.5 font-semibold text-[14px] md:text-xs text-gray-600 dark:text-white">Ocupação
-                                            *</label>
-                                        <select id="ocupacao" name="ocupacaoId" required
-                                            class="p-2 md:p-2.5 text-base md:text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-azul-800 focus:ring-1 focus:ring-azul-800 transition-colors bg-white dark:bg-azul-100 dark:text-azul-900 dark:placeholder-azul-300 w-full appearance-none">
-                                            <option value="" disabled selected>Selecione a sua ocupação</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="pt-4 pb-2">
-                                <div
-                                    class="flex items-center p-4 md:p-6 border-2 border-dashed border-azul-100 dark:border-slate-700 rounded-2xl bg-azul-50/30 dark:bg-slate-900/50 transition-all hover:border-laranja-200 gap-4">
-
-                                    <div class="flex shrink-0">
-                                        <input type="checkbox" id="titular" name="titular" value="SIM" required
-                                            class="w-6 h-6 md:w-7 md:h-7 text-laranja-600 border-gray-300 rounded-lg focus:ring-laranja-500 dark:bg-slate-700 dark:border-slate-600 cursor-pointer transition-transform hover:scale-110">
-                                    </div>
-
-                                    <div class="text-left space-y-1">
-                                        <label for="titular"
-                                            class="text-[11px] md:text-lg font-bold text-azul-950 dark:text-white cursor-pointer select-none block uppercase">
-                                            Sou beneficiário(a) do Bolsa Família
-                                        </label>
-                                        <p
-                                            class="text-[11px] md:text-[12px] text-slate-500 dark:text-slate-400 font-medium">
-                                            O benefício deve estar ativo e cadastrado obrigatoriamente no seu CPF.
-                                        </p>
-                                    </div>
-
-                                </div>
-
-                                <div
-                                    class="flex items-start gap-3 p-3 mt-4 md:p-4 bg-orange-50/80 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800/50 border-l-4 border-l-orange-500 rounded-r-lg">
-                                    <i data-lucide="alert-triangle"
-                                        class="w-5 h-5 text-orange-600 dark:text-orange-500 shrink-0 mt-0.5"></i>
-                                    <div class="text-[12px] md:text-[14px] dark:text-orange-200 leading-relaxed">
-                                        <strong>Requisitos para simulação:</strong>
-                                        <ul class="mt-1 space-y-0.5 list-none">
-                                            <li><i data-lucide="check"
-                                                    class="inline w-3.5 h-3.5 text-orange-600 dark:text-orange-500"></i>
-                                                Ser beneficiário(a) ativo(a) do Bolsa Família;</li>
-                                            <li><i data-lucide="check"
-                                                    class="inline w-3.5 h-3.5 text-orange-600 dark:text-orange-500"></i>
-                                                Ter o CadÚnico atualizado;</li>
-                                            <li><i data-lucide="check"
-                                                    class="inline w-3.5 h-3.5 text-orange-600 dark:text-orange-500"></i>
-                                                Aceitar o desconto das parcelas no benefício;</li>
-                                            <li><i data-lucide="check"
-                                                    class="inline w-3.5 h-3.5 text-orange-600 dark:text-orange-500"></i>
-                                                Possuir conta na Caixa para receber o crédito.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <!-- BOTÃO ENVIAR -->
-                            <div class="pt-2 md:pt-3 border-t border-gray-100 dark:border-slate-800">
-                                <button type="submit" id="btnEnviar"
-                                    class="w-full bg-laranja-600 text-white px-6 py-2.5 md:py-3 rounded-lg text-base md:text-2xl font-bold hover:bg-laranja-700 transition-colors shadow-md hover:shadow-lg flex items-center justify-center gap-2 transform active:scale-95 duration-100">
-                                    <span>Enviar Proposta</span>
-                                    <i data-lucide="check-circle" class="w-4 h-4 md:w-5 md:h-5"></i>
-                                </button>
-                            </div>
-
-                        </form>
-                    </div>
+                <div class="flex flex-wrap justify-center gap-6 mt-10 text-sm text-slate-500 dark:text-slate-400">
+                    <span class="flex items-center gap-2">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-laranja-600"></i> 100% Seguro
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <i data-lucide="zap" class="w-4 h-4 text-laranja-600"></i> Resultado em segundos
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <i data-lucide="badge-check" class="w-4 h-4 text-laranja-600"></i> Grátis
+                    </span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- MODAL DE BUSCA DE CEP -->
-    <div id="modalBuscaCep"
-        class="fixed inset-0 bg-gray-900 bg-opacity-50 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm">
-        <div
-            class="bg-white dark:bg-slate-900 rounded-lg shadow-2xl w-full max-w-md overflow-hidden transform transition-all">
-            <div
-                class="bg-gray-50 dark:bg-slate-800 px-4 py-3 border-b border-gray-200 dark:border-slate-700 flex justify-between items-center">
-                <h3 class="text-lg font-bold text-azul-900 dark:text-white">Localizar Endereço</h3>
-                <button type="button" id="btnFecharModal"
-                    class="text-gray-400 hover:text-gray-600 dark:hover:text-slate-200 text-2xl font-bold leading-none">&times;</button>
-            </div>
-            <div class="p-6">
-                <div class="text-center mb-4">
-                    <button type="button" id="btnGeoModal"
-                        class="w-full bg-azul-800 text-white py-2.5 px-4 rounded-md font-bold hover:bg-azul-900 transition shadow flex items-center justify-center gap-2">
-                        <i data-lucide="map-pin" class="w-4 h-4"></i> Usar minha localização (GPS)
-                    </button>
-                </div>
-                <div class="relative flex py-2 items-center">
-                    <div class="flex-grow border-t border-gray-300 dark:border-slate-600"></div>
-                    <span class="flex-shrink-0 mx-4 text-gray-400 text-[10px] uppercase font-semibold">OU Busque
-                        Manualmente</span>
-                    <div class="flex-grow border-t border-gray-300 dark:border-slate-600"></div>
-                </div>
-                <div class="mt-4 space-y-3">
-                    <div class="grid grid-cols-3 gap-2">
-                        <div class="col-span-1">
-                            <select id="buscaUFModal"
-                                class="w-full p-2 border rounded text-xs bg-white dark:bg-slate-800 dark:border-slate-700 text-gray-700 dark:text-white">
-                                <option value="" disabled selected>UF</option>
-                                <option value="AC">AC</option>
-                                <option value="AL">AL</option>
-                                <option value="AP">AP</option>
-                                <option value="AM">AM</option>
-                                <option value="BA">BA</option>
-                                <option value="CE">CE</option>
-                                <option value="DF">DF</option>
-                                <option value="ES">ES</option>
-                                <option value="GO">GO</option>
-                                <option value="MA">MA</option>
-                                <option value="MT">MT</option>
-                                <option value="MS">MS</option>
-                                <option value="MG">MG</option>
-                                <option value="PA">PA</option>
-                                <option value="PB">PB</option>
-                                <option value="PR">PR</option>
-                                <option value="PE">PE</option>
-                                <option value="PI">PI</option>
-                                <option value="RJ">RJ</option>
-                                <option value="RN">RN</option>
-                                <option value="RS">RS</option>
-                                <option value="RO">RO</option>
-                                <option value="RR">RR</option>
-                                <option value="SC">SC</option>
-                                <option value="SP">SP</option>
-                                <option value="SE">SE</option>
-                                <option value="TO">TO</option>
-                            </select>
-                        </div>
-                        <div class="col-span-2 relative">
-                            <input type="text" id="buscaCidadeModal" autocomplete="off" placeholder="Cidade"
-                                class="w-full p-2 border rounded text-xs bg-white dark:bg-slate-800 dark:border-slate-700 dark:text-white placeholder-slate-400">
-                            <ul id="listaCidadesAutocomplete"
-                                class="absolute z-10 w-full mt-1 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-md shadow-lg max-h-40 overflow-y-auto hidden text-xs scrollbar-thin scrollbar-thumb-gray-300">
-                            </ul>
-                        </div>
-                    </div>
-                    <input type="text" id="buscaRuaModal" placeholder="Nome do bairro (Mín. 3 letras)"
-                        class="w-full p-2 border rounded text-xs bg-white dark:bg-slate-800 dark:border-slate-700 dark:text-white placeholder-slate-400">
-                    <button type="button" id="btnBuscarManual"
-                        class="w-full bg-gray-200 dark:bg-slate-800 text-gray-700 dark:text-slate-200 py-2 rounded font-semibold hover:bg-gray-300 dark:hover:bg-slate-600 transition text-sm">
-                        🔍 Buscar CEP
-                    </button>
-                </div>
-                <div id="resultadoBuscaCep"
-                    class="mt-4 max-h-40 overflow-y-auto hidden border-t pt-2 border-gray-200 dark:border-slate-700 scrollbar-thin scrollbar-thumb-gray-300">
-                    <p class="text-[10px] text-gray-500 dark:text-slate-400 mb-2">Clique no endereço para selecionar:
-                    </p>
-                    <ul id="listaCeps" class="text-xs space-y-1"></ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="./scripts/js/cad_proposta/insert.js?v=beta-1787862405"></script>
     <!-- DEPOIMENTOS -->
     <section id="depoimentos" class="pb-20 bg-white dark:bg-slate-900">
         <div class="max-w-7xl mx-auto px-4">
@@ -852,16 +459,6 @@
 
     <!-- SCRIPTS DE DEPENDÊNCIA -->
     <script>lucide.createIcons();</script>
-    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/localization/messages_pt_BR.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <!-- SCRIPT DE LÓGICA DO FORMULÁRIO -->
-    <script src="./scripts/js/cad_proposta/insert.js?v=beta-1787862405"></script>
 
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJD68PCW" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>

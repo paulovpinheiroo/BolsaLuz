@@ -136,7 +136,7 @@ function montarPayload() {
             recebeBolsaFamilia: estado.respostas[2],
             cadUnicoAtualizado: estado.respostas[3],
             aceitaDesconto: estado.respostas[4],
-            receberNaCaixa: estado.respostas[5]
+            beneficioPeloMenos400: estado.respostas[5]
         },
         enviadoEm: new Date().toISOString()
     };
@@ -169,7 +169,7 @@ function montarTelaFinal() {
     missoes.appendChild(mostrarMissao('fa-hand-holding-dollar', 'Recebe Bolsa Família', estado.respostas[2] === 'sim'));
     missoes.appendChild(mostrarMissao('fa-shield-halved', 'CadÚnico atualizado', estado.respostas[3] === 'sim'));
     missoes.appendChild(mostrarMissao('fa-file-signature', 'Desconto aceito', estado.respostas[4] === 'sim'));
-    missoes.appendChild(mostrarMissao('fa-building-columns', 'Receber na Caixa', estado.respostas[5] === 'sim'));
+    missoes.appendChild(mostrarMissao('fa-money-bill-wave', 'Benefício ≥ R$400', estado.respostas[5] === 'sim'));
 
     document.getElementById('recompensa-contador').textContent = pontuacao + ' de 4';
     montarEstrelas(pontuacao);

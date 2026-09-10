@@ -928,7 +928,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { chave: 'recebeBolsaFamilia', pergunta: 'Recebe Bolsa Família?' },
         { chave: 'cadUnicoAtualizado', pergunta: 'CadÚnico atualizado?' },
         { chave: 'aceitaDesconto', pergunta: 'Aceita o desconto no benefício?' },
-        { chave: 'receberNaCaixa', pergunta: 'Quer receber na Conta da Caixa?' }
+        { chave: 'beneficioPeloMenos400', pergunta: 'Benefício ≥ R$400?' }
     ];
 
     function coletarRespostasCad(item) {
