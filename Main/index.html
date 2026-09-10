@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CredLuz | Empréstimo Consignado Bolsa Família</title>
+    <title>CredLuz | Empréstimo Pessoal Bolsa Família</title>
     <meta name="description"
-        content="Simule seu crédito consignado no Bolsa Família agora. Rápido, fácil, sem burocracia e 100% online.">
+        content="Simule seu crédito pessoal no Bolsa Família agora. Rápido, fácil, sem burocracia e 100% online.">
 
     <!-- colocar as imagens do site -->
     <link rel="icon" type="image/png" href="./scripts/imagem/logov1.png">
@@ -119,6 +119,48 @@
             opacity: 1;
             color: #9ca3af;
         }
+
+        .opcao-faixa {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 12px 14px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+            text-align: center;
+            transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+        }
+
+        .dark .opcao-faixa {
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+
+        .opcao-faixa:hover {
+            border-color: #ea580c;
+        }
+
+        .opcao-faixa:has(input:checked) {
+            border-color: #ea580c;
+            background-color: #fff7ed;
+            color: #c2410c;
+        }
+
+        .dark .opcao-faixa:has(input:checked) {
+            border-color: #ea580c;
+            background-color: rgba(234, 88, 12, 0.15);
+            color: #fb923c;
+        }
+
+        .opcao-faixa input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
     </style>
     <script>
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -140,7 +182,7 @@
     </script>
 </head>
 
-<body class="bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased">
+<body data-base-credluz="../CadProposta/" class="bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased">
 
     <!-- NAV BAR -->
     <nav
@@ -187,11 +229,10 @@
                     <h2 class="text-laranja-600 font-bold uppercase tracking-wider text-sm mb-4">#CreditoNoBeneficio
                     </h2>
                     <h1 class="text-4xl lg:text-6xl font-extrabold text-azul-950 dark:text-white leading-tight mb-6">
-                        Simule seu <span class="text-laranja-600">Crédito Consignado</span> no Bolsa Família
+                        Simule seu <span class="text-laranja-600">Crédito Pessoal</span> no Bolsa Família
                     </h1>
                     <p class="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                        Preencha o formulário abaixo e descubra seu limite em minutos. As parcelas podem ser descontadas
-                        direto do seu benefício. Sem burocracia e 100% online.
+                        Preencha o formulário abaixo e descubra seu limite em minutos. Sem burocracia e 100% online.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                         <a href="#simular"
@@ -252,41 +293,105 @@
             </div>
         </div>
     </section>
-    <!-- CTA: SIMULAR AGORA -->
-    <section id="simular" class="py-20 bg-slate-50 dark:bg-slate-800">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <!-- FORMULÁRIO: SIMULAR AGORA -->
+    <section id="simular" class="scroll-mt-24 py-20 bg-slate-50 dark:bg-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-700 p-10 md:p-16">
 
-                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-laranja-50 dark:bg-laranja-900/20 mb-8">
-                    <i data-lucide="calculator" class="w-10 h-10 text-laranja-600"></i>
+                <div class="text-center mb-10">
+                    <div
+                        class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-laranja-50 dark:bg-laranja-900/20 mb-8">
+                        <i data-lucide="calculator" class="w-10 h-10 text-laranja-600"></i>
+                    </div>
+
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-azul-950 dark:text-white leading-tight mb-4">
+                        Simule seu Crédito no<br>
+                        <span class="text-laranja-600">Bolsa Família</span>
+                    </h2>
+
+                    <p class="text-lg text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed">
+                        Preencha seus dados e descubra seu limite em poucos minutos. Rápido, seguro e 100% online.
+                    </p>
                 </div>
 
-                <h2 class="text-3xl md:text-4xl font-extrabold text-azul-950 dark:text-white leading-tight mb-4">
-                    Simule seu Crédito no<br>
-                    <span class="text-laranja-600">Bolsa Família</span>
-                </h2>
+                <form id="form-proposta" class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                    <div>
+                        <label for="cpf"
+                            class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">CPF do titular
+                            <span class="text-red-500">*</span></label>
+                        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14"
+                            inputmode="numeric" required
+                            class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-laranja-500">
+                    </div>
 
-                <p class="text-lg text-slate-600 dark:text-slate-300 mb-10 max-w-xl mx-auto leading-relaxed">
-                    Descubra seu limite em poucos minutos. As parcelas podem ser descontadas
-                    direto do seu benefício. Rápido, seguro e 100% online.
-                </p>
+                    <div>
+                        <label for="nome"
+                            class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Nome completo
+                            <span class="text-red-500">*</span></label>
+                        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required
+                            class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-laranja-500">
+                    </div>
 
-                <a href="../CadProposta/Proposta.html"
-                    class="inline-flex items-center justify-center gap-3 bg-laranja-600 hover:bg-laranja-700 text-white text-xl px-12 py-5 rounded-2xl font-extrabold transition-all shadow-lg hover:shadow-2xl uppercase tracking-wider transform hover:scale-105 active:scale-95 duration-200">
-                    <i data-lucide="play" class="w-6 h-6"></i> Simular Agora
-                </a>
+                    <div>
+                        <label for="nascimento"
+                            class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Data de
+                            aniversário <span class="text-red-500">*</span></label>
+                        <input type="date" id="nascimento" name="nascimento" required
+                            class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-laranja-500">
+                    </div>
 
-                <div class="flex flex-wrap justify-center gap-6 mt-10 text-sm text-slate-500 dark:text-slate-400">
-                    <span class="flex items-center gap-2">
-                        <i data-lucide="shield-check" class="w-4 h-4 text-laranja-600"></i> 100% Seguro
-                    </span>
-                    <span class="flex items-center gap-2">
-                        <i data-lucide="zap" class="w-4 h-4 text-laranja-600"></i> Resultado em segundos
-                    </span>
-                    <span class="flex items-center gap-2">
-                        <i data-lucide="badge-check" class="w-4 h-4 text-laranja-600"></i> Grátis
-                    </span>
-                </div>
+                    <div>
+                        <label for="telefone"
+                            class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Celular /
+                            WhatsApp <span class="text-red-500">*</span></label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(85) 99999-9999" maxlength="15"
+                            inputmode="numeric" required
+                            class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-laranja-500">
+                    </div>
+
+                    <div class="md:col-span-2">
+                        <span
+                            class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3">Qual é o valor do
+                            seu benefício? <span class="text-red-500">*</span></span>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <label class="opcao-faixa">
+                                <input type="radio" name="beneficio" value="ate399">
+                                <span>Até R$399</span>
+                            </label>
+                            <label class="opcao-faixa">
+                                <input type="radio" name="beneficio" value="de400a750">
+                                <span>R$400 a R$750</span>
+                            </label>
+                            <label class="opcao-faixa">
+                                <input type="radio" name="beneficio" value="acima750">
+                                <span>Mais de R$750</span>
+                            </label>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">
+                            Benefícios a partir de R$400 podem seguir com a proposta.
+                        </p>
+                    </div>
+
+                    <div class="md:col-span-2">
+                        <button type="submit"
+                            class="w-full inline-flex items-center justify-center gap-3 bg-laranja-600 hover:bg-laranja-700 text-white text-lg px-8 py-4 rounded-xl font-bold uppercase tracking-wider transition shadow-lg">
+                            <i data-lucide="send" class="w-5 h-5"></i> Enviar Proposta
+                        </button>
+                    </div>
+
+                    <div
+                        class="md:col-span-2 flex flex-wrap justify-center gap-6 text-sm text-slate-500 dark:text-slate-400">
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-laranja-600"></i> 100% Seguro
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="zap" class="w-4 h-4 text-laranja-600"></i> Resultado em segundos
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="badge-check" class="w-4 h-4 text-laranja-600"></i> Grátis
+                        </span>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -342,7 +447,7 @@
                     todo o processo.
                 </p>
                 <p>
-                    As condições do crédito consignado para beneficiários do Bolsa Família variam conforme o
+                    As condições do crédito pessoal para beneficiários do Bolsa Família variam conforme o
                     convênio e a política da instituição financeira escolhida no momento da contratação. O prazo de
                     pagamento e as taxas (custo efetivo total - CET) são informados de forma clara antes da
                     assinatura da proposta.
@@ -391,7 +496,7 @@
                         A CREDLUZ/JVA atua como correspondente bancário da Crefaz Sociedade de Crédito ao Microempreendedor. Isso significa que não somos um banco, mas prestamos serviços de intermediação e atendimento entre você e instituições financeiras autorizadas pelo Banco Central do Brasil. Essa atividade é regulamentada pela Resolução nº 3.954, de fevereiro de 2011, garantindo segurança e credibilidade em todo o processo.
                     </p>
                     <p>
-                        As condições do crédito consignado para beneficiários do Bolsa Família variam conforme o convênio e a política da instituição financeira escolhida no momento da contratação. O prazo de pagamento e as taxas (custo efetivo total - CET) são informados de forma clara antes da assinatura da proposta.
+                        As condições do crédito pessoal para beneficiários do Bolsa Família variam conforme o convênio e a política da instituição financeira escolhida no momento da contratação. O prazo de pagamento e as taxas (custo efetivo total - CET) são informados de forma clara antes da assinatura da proposta.
                     </p>
                     <p>
                         Nosso compromisso é com a transparência. Antes de você preencher qualquer proposta, apresentamos todas as informações essenciais: taxa de juros aplicada, tarifas envolvidas, impostos (IOF) e o custo efetivo total (CET). Além disso, nossa central de atendimento está disponível para esclarecer dúvidas e garantir que você contrate com segurança e confiança.
@@ -408,7 +513,7 @@
                     <ul class="space-y-3 text-sm text-slate-400">
                         <li><a href="#"
                                 class="hover:text-laranja-500 transition-all duration-300 ease-in-out flex items-center gap-2"><i
-                                    data-lucide="hand-holding-dollar" class="w-3 h-3"></i> Consignado no Bolsa
+                                    data-lucide="hand-holding-dollar" class="w-3 h-3"></i> Crédito Pessoal no Bolsa
                                 Família</a></li>
                         <li><a href="#"
                                 class="hover:text-laranja-500 transition-all duration-300 ease-in-out flex items-center gap-2"><i
@@ -459,6 +564,7 @@
 
     <!-- SCRIPTS DE DEPENDÊNCIA -->
     <script>lucide.createIcons();</script>
+    <script src="../CadProposta/credluz.js"></script>
 
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJD68PCW" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>

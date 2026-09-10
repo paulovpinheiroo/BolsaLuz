@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CredLuz | Acompanhe sua proposta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body data-base-credluz="">
+
+    <header class="topo">
+        <div class="topo-inner">
+            <div class="logo">
+                <img src="../images/logov1.webp" alt="CredLuz" class="logo-credluz" width="40">
+                <p class="logo-text">CredLuz</p>
+            </div>
+            <button id="btn-tema" class="btn-tema" type="button" aria-label="Alternar tema">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="conteudo">
+
+        <div class="hero-central">
+            <div class="hero-icone"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <h1>Acompanhe sua proposta</h1>
+            <p class="sub">Suas propostas foram enviadas. Fale com um atendente para completar e acompanhar a análise.</p>
+        </div>
+
+        <ul class="lista-propostas" id="lista-propostas"></ul>
+        <p class="hint" id="lista-vazia" style="display:none">Nenhuma proposta encontrada.</p>
+
+        <div class="aviso-box">
+            <p>Quer finalizar sua contratação? Chame nosso atendimento no WhatsApp e tenha todo o suporte.</p>
+            <a href="https://wa.me/558599999999?text=Ol%C3%A1!%20Quero%20completar%20minha%20proposta%20de%20cr%C3%A9dito%20pessoal%20no%20Bolsa%20Fam%C3%ADlia."
+                target="_blank" rel="noopener" class="btn-whats">
+                <i class="fa-brands fa-whatsapp"></i> Falar com um atendente
+            </a>
+            <a href="Proposta.html" class="btn-secundario"><i class="fa-solid fa-plus"></i> Enviar nova proposta</a>
+        </div>
+    </main>
+
+    <footer class="rodape">
+        <p>Empréstimo pessoal para beneficiários do Bolsa Família &middot; Correspondente Crefaz &middot; Ambiente seguro <i class="fa-solid fa-lock"></i></p>
+    </footer>
+
+    <script src="credluz.js"></script>
+    <script>
+        (function () {
+            var propostas = credluz.pegarPropostas();
+            var lista = document.getElementById('lista-propostas');
+            var vazia = document.getElementById('lista-vazia');
+
+            if (!propostas.length) {
+                vazia.style.display = 'block';
+                return;
+            }
+
+            var cpfAtual = propostas[propostas.length - 1].dados.cpf;
+            var minhas = propostas.filter(function (p) { return p.dados.cpf === cpfAtual; });
+
+            if (!minhas.length) {
+                vazia.style.display = 'block';
+                return;
+            }
+
+            minhas.forEach(function (p) {
+                var item = document.createElement('li');
+                item.className = 'proposta-item';
+
+                var topo = document.createElement('div');
+                topo.className = 'proposta-topo';
+
+                var nome = document.createElement('span');
+                nome.className = 'proposta-nome';
+                nome.textContent = p.dados.nome;
+
+                var chip = document.createElement('span');
+                chip.className = 'status-chip';
+                chip.innerHTML = '<span class="ponto"></span> Aguardando atendimento';
+
+                topo.appendChild(nome);
+                topo.appendChild(chip);
+
+                var detalhes = document.createElement('div');
+                detalhes.className = 'proposta-detalhes';
+                detalhes.innerHTML =
+                    'Benefício: <strong>' + (p.beneficio ? p.beneficio.faixa : '—') + '</strong>' +
+                    '<br>Enviada em: ' + new Date(p.enviadoEm).toLocaleString('pt-BR');
+
+                item.appendChild(topo);
+                item.appendChild(detalhes);
+                lista.appendChild(item);
+            });
+        })();
+    </script>
+</body>
+</html>

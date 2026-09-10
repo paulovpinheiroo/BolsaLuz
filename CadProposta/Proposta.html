@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CredLuz | Empréstimo Consignado Bolsa Família</title>
+    <title>CredLuz | Empréstimo Pessoal Bolsa Família</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="Proposta.css">
+    <link rel="stylesheet" href="estilo.css">
 </head>
-<body>
+<body data-base-credluz="">
 
     <header class="topo">
         <div class="topo-inner">
@@ -23,155 +23,68 @@
 
     <main class="conteudo">
 
-        <div class="stepper">
-            <div class="stepper-item ativo" data-step="1">
-                <span class="stepper-num">1</span>
-                <span class="stepper-label">Dados</span>
-            </div>
-            <div class="stepper-item" data-step="2">
-                <span class="stepper-num">2</span>
-                <span class="stepper-label">Benefício</span>
-            </div>
-            <div class="stepper-item" data-step="3">
-                <span class="stepper-num">3</span>
-                <span class="stepper-label">CadÚnico</span>
-            </div>
-            <div class="stepper-item" data-step="4">
-                <span class="stepper-num">4</span>
-                <span class="stepper-label">Contrato</span>
-            </div>
-            <div class="stepper-item" data-step="5">
-                <span class="stepper-num">5</span>
-                <span class="stepper-label">Conta</span>
-            </div>
-            <div class="stepper-item" data-step="6">
-                <span class="stepper-num">6</span>
-                <span class="stepper-label">Pronto</span>
-            </div>
+        <div class="hero-central">
+            <div class="hero-icone"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+            <h1>Envie sua proposta<br>de crédito pessoal</h1>
+            <p class="sub">Preencha seus dados e nosso atendente completa o restante com você.<br>Rápido, seguro e 100% online.</p>
         </div>
 
-        <div class="topo-controles">
-            <button type="button" class="btn-voltar" id="btn-voltar-top"><i class="fa-solid fa-arrow-left"></i> Voltar</button>
-            <span class="etapa-indicador" id="etapa-indicador">Etapa 1 de 6</span>
-        </div>
-
-        <div class="barra-progresso">
-            <div class="barra-progresso-fill" id="barra-progresso"></div>
-        </div>
-
-        <div class="incentivo" id="incentivo">Vamos descobrir seu crédito!</div>
-
-        <div class="card">
-
-            <section class="etapa ativa" data-etapa="1">
-                <div class="hero-central">
-                    <h1>Descubra seu limite<br>no Bolsa Família</h1>
-                    <p class="sub">Crédito consignado no seu benefício.<br>Resultado em segundos.</p>
+        <div class="card-dados">
+            <form id="form-proposta">
+                <div class="campo">
+                    <label for="cpf">CPF do titular <span class="obg">*</span></label>
+                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14" inputmode="numeric" required>
                 </div>
 
-                <div class="card-dados">
-                    <div class="campo">
-                        <label for="cpf">CPF do titular <span class="obg">*</span></label>
-                        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14" inputmode="numeric" required>
+                <div class="campo">
+                    <label for="nome">Nome completo <span class="obg">*</span></label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                </div>
+
+                <div class="campo">
+                    <label for="nascimento">Data de aniversário <span class="obg">*</span></label>
+                    <input type="date" id="nascimento" name="nascimento" required>
+                </div>
+
+                <div class="campo">
+                    <label for="telefone">Celular / WhatsApp <span class="obg">*</span></label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(85) 99999-9999" maxlength="15" inputmode="numeric" required>
+                </div>
+
+                <fieldset class="campo campo-faixas">
+                    <legend>Qual é o valor do seu benefício? <span class="obg">*</span></legend>
+                    <div class="faixas">
+                        <label class="opcao-faixa">
+                            <input type="radio" name="beneficio" value="ate399">
+                            <span>Até R$399</span>
+                        </label>
+                        <label class="opcao-faixa">
+                            <input type="radio" name="beneficio" value="de400a750">
+                            <span>R$400 a R$750</span>
+                        </label>
+                        <label class="opcao-faixa">
+                            <input type="radio" name="beneficio" value="acima750">
+                            <span>Mais de R$750</span>
+                        </label>
                     </div>
+                    <p class="hint">Benefícios a partir de R$400 podem seguir com a proposta.</p>
+                </fieldset>
 
-                    <div class="campo">
-                        <label for="nome">Nome Completo <span class="obg">*</span></label>
-                        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
-                    </div>
+                <button type="submit" class="btn-primario"><i class="fa-solid fa-paper-plane"></i> Enviar Proposta</button>
+            </form>
+        </div>
 
-                    <button type="button" class="btn-avancar" data-proximo="2">Continuar <i class="fa-solid fa-arrow-right"></i></button>
-                </div>
-
-                <div class="selos">
-                    <span><i class="fa-solid fa-lock"></i> Dados protegidos</span>
-                    <span><i class="fa-solid fa-bolt"></i> Análise instantânea</span>
-                    <span><i class="fa-solid fa-check"></i> Grátis</span>
-                </div>
-            </section>
-
-            <section class="etapa" data-etapa="2">
-                <div class="pergunta">
-                    <div class="pergunta-icone"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-                    <h1>Você recebe o Bolsa Família?</h1>
-                    <p class="sub">O benefício precisa estar ativo no seu nome para o consignado.</p>
-                </div>
-
-                <div class="card-dados respostas">
-                    <button type="button" class="btn-sim resposta" data-resposta="sim"><i class="fa-solid fa-check"></i> Sim</button>
-                    <button type="button" class="btn-nao resposta" data-resposta="nao"><i class="fa-solid fa-xmark"></i> Não</button>
-                </div>
-            </section>
-
-            <section class="etapa" data-etapa="3">
-                <div class="pergunta">
-                    <div class="pergunta-icone"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h1>Seu CadÚnico está atualizado?</h1>
-                    <p class="sub">Dados em dia há menos de 2 anos ajudam na liberação.</p>
-                </div>
-
-                <div class="card-dados respostas">
-                    <button type="button" class="btn-sim resposta" data-resposta="sim"><i class="fa-solid fa-check"></i> Sim</button>
-                    <button type="button" class="btn-nao resposta" data-resposta="nao"><i class="fa-solid fa-xmark"></i> Não</button>
-                </div>
-            </section>
-
-            <section class="etapa" data-etapa="4">
-                <div class="pergunta">
-                    <div class="pergunta-icone"><i class="fa-solid fa-file-signature"></i></div>
-                    <h1>Aceita o desconto no seu benefício?</h1>
-                    <p class="sub">As parcelas são descontadas direto do valor do Bolsa Família.</p>
-                </div>
-
-                <div class="card-dados respostas">
-                    <button type="button" class="btn-sim resposta" data-resposta="sim"><i class="fa-solid fa-check"></i> Sim</button>
-                    <button type="button" class="btn-nao resposta" data-resposta="nao"><i class="fa-solid fa-xmark"></i> Não</button>
-                </div>
-            </section>
-
-            <section class="etapa" data-etapa="5">
-                <div class="pergunta">
-                    <div class="pergunta-icone"><i class="fa-solid fa-money-bill-wave"></i></div>
-                    <h1>Seu benefício é de pelo menos R$400?</h1>
-                    <p class="sub">Benefícios a partir de R$400 são elegíveis ao consignado.</p>
-                </div>
-
-                <div class="card-dados respostas">
-                    <button type="button" class="btn-sim resposta" data-resposta="sim" data-ultima="1"><i class="fa-solid fa-check"></i> Sim</button>
-                    <button type="button" class="btn-nao resposta" data-resposta="nao" data-ultima="1"><i class="fa-solid fa-xmark"></i> Não</button>
-                </div>
-
-                <div class="nav-botoes">
-                    <button type="button" class="btn-concluir" id="btn-concluir" disabled><i class="fa-solid fa-paper-plane"></i> Concluir</button>
-                </div>
-            </section>
-
-            <section class="etapa" data-etapa="6">
-                <div class="confete" id="confete"></div>
-                <div class="pronto-icone"><i class="fa-solid fa-trophy"></i></div>
-                <h1>Proposta enviada!</h1>
-                <p class="sub">Parabéns, <strong id="pronto-nome"></strong>! Você concluiu todas as missões.</p>
-
-                <div class="recompensa">
-                    <span class="recompensa-rotulo"><i class="fa-solid fa-star"></i> Missões concluídas</span>
-                    <div class="recompensa-estrelas" id="recompensa-estrelas"></div>
-                    <span class="recompensa-nivel" id="recompensa-contador">0 de 4</span>
-                </div>
-
-                <ul class="missoes" id="missoes"></ul>
-
-                <div class="nav-botoes">
-                    <button type="button" class="btn-avancar" id="btn-nova-proposta"><i class="fa-solid fa-arrow-right"></i> Fazer nova proposta</button>
-                </div>
-            </section>
-
+        <div class="selos">
+            <span><i class="fa-solid fa-lock"></i> Dados protegidos</span>
+            <span><i class="fa-solid fa-bolt"></i> Análise instantânea</span>
+            <span><i class="fa-solid fa-check"></i> Grátis</span>
         </div>
     </main>
 
     <footer class="rodape">
-        <p>Empréstimo consignado para beneficiários do Bolsa Família &middot; Correspondente Crefaz &middot; Ambiente seguro <i class="fa-solid fa-lock"></i></p>
+        <p>Empréstimo pessoal para beneficiários do Bolsa Família &middot; Correspondente Crefaz &middot; Ambiente seguro <i class="fa-solid fa-lock"></i></p>
     </footer>
 
-    <script src="Proposta.js"></script>
+    <script src="credluz.js"></script>
 </body>
 </html>
