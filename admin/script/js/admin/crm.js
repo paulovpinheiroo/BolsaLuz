@@ -500,7 +500,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     <i class="fas fa-file-contract text-lg text-slate-500"></i>
                                     <h3 class="text-sm font-black uppercase tracking-widest text-slate-700 dark:text-slate-300">Dados da Operação Atual</h3>
                                 </div>
-                                <div class="ml-8 bg-blue-50 dark:bg-blue-900/20 p-5 rounded-lg border border-blue-100 dark:border-blue-800 shadow-sm">
+                                <div class="md:ml-8 bg-blue-50 dark:bg-blue-900/20 p-5 rounded-lg border border-blue-100 dark:border-blue-800 shadow-sm">
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div>
                                             <p class="text-[10px] font-black text-slate-400 uppercase mb-1">Produto / Convênio</p>
@@ -542,7 +542,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     <i class="fas fa-search-dollar text-lg text-slate-500"></i>
                                     <h3 class="text-sm font-black uppercase tracking-widest text-slate-700 dark:text-slate-300">Crédito Disponível</h3>
                                 </div>
-                                <div class="ml-8">
+                                <div class="md:ml-8">
                                     <button id="btnFetchOfertasLive" type="button" class="w-full bg-white dark:bg-slate-800 border border-laranja-300 dark:border-slate-600 hover:border-laranja-400 text-laranja-600 dark:text-laranja-500 font-bold py-3 rounded-lg text-xs transition-all shadow-sm flex items-center justify-center gap-2">
                                         <i class="fas fa-sync-alt"></i> Buscar limites ao vivo na Crefaz
                                     </button>
