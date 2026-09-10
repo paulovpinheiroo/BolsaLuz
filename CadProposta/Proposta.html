@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="estilo.css">
 </head>
+
 <body data-base-credluz="">
 
     <header class="topo">
@@ -26,14 +28,16 @@
         <div class="hero-central">
             <div class="hero-icone"><i class="fa-solid fa-hand-holding-dollar"></i></div>
             <h1>Envie sua proposta<br>de crédito pessoal</h1>
-            <p class="sub">Preencha seus dados e nosso atendente completa o restante com você.<br>Rápido, seguro e 100% online.</p>
+            <p class="sub">Preencha seus dados e nosso atendente completa o restante com você.<br>Rápido, seguro e 100%
+                online.</p>
         </div>
 
         <div class="card-dados">
             <form id="form-proposta">
                 <div class="campo">
                     <label for="cpf">CPF do titular <span class="obg">*</span></label>
-                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14" inputmode="numeric" required>
+                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14"
+                        inputmode="numeric" required>
                 </div>
 
                 <div class="campo">
@@ -48,7 +52,8 @@
 
                 <div class="campo">
                     <label for="telefone">Celular / WhatsApp <span class="obg">*</span></label>
-                    <input type="tel" id="telefone" name="telefone" placeholder="(85) 99999-9999" maxlength="15" inputmode="numeric" required>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(85) 99999-9999" maxlength="15"
+                        inputmode="numeric" required>
                 </div>
 
                 <fieldset class="campo campo-faixas">
@@ -56,21 +61,18 @@
                     <div class="faixas">
                         <label class="opcao-faixa">
                             <input type="radio" name="beneficio" value="ate399">
-                            <span>Até R$399</span>
+                            <span>Até R$350</span>
                         </label>
                         <label class="opcao-faixa">
                             <input type="radio" name="beneficio" value="de400a750">
-                            <span>R$400 a R$750</span>
-                        </label>
-                        <label class="opcao-faixa">
-                            <input type="radio" name="beneficio" value="acima750">
-                            <span>Mais de R$750</span>
+                            <span>Acima de R$400</span>
                         </label>
                     </div>
                     <p class="hint">Benefícios a partir de R$400 podem seguir com a proposta.</p>
                 </fieldset>
 
-                <button type="submit" class="btn-primario"><i class="fa-solid fa-paper-plane"></i> Enviar Proposta</button>
+                <button type="submit" class="btn-primario"><i class="fa-solid fa-paper-plane"></i> Enviar
+                    Proposta</button>
             </form>
         </div>
 
@@ -82,9 +84,11 @@
     </main>
 
     <footer class="rodape">
-        <p>Empréstimo pessoal para beneficiários do Bolsa Família &middot; Correspondente Crefaz &middot; Ambiente seguro <i class="fa-solid fa-lock"></i></p>
+        <p>Empréstimo pessoal para beneficiários do Bolsa Família &middot; Correspondente Crefaz &middot; Ambiente
+            seguro <i class="fa-solid fa-lock"></i></p>
     </footer>
 
     <script src="credluz.js"></script>
 </body>
+
 </html>
