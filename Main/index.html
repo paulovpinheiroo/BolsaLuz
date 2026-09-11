@@ -351,23 +351,34 @@
                             class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3.5 py-2.5 sm:px-4 sm:py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-laranja-500">
                     </div>
 
-                    <div class="md:col-span-2">
-                        <span
-                            class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3">Qual é o valor do
-                            seu benefício? <span class="text-red-500">*</span></span>
+                    <div class="md:col-span-1">
+                        <span class="block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3">Você
+                            recebe benefício acima de R$400? <span class="text-red-500">*</span></span>
                         <div class="grid grid-cols-2 gap-2 sm:gap-3">
                             <label class="opcao-faixa">
-                                <input type="radio" name="beneficio" value="ate350">
-                                <span>Até R$350</span>
+                                <input type="radio" name="beneficio" value="sim">
+                                <span>Sim</span>
                             </label>
                             <label class="opcao-faixa">
-                                <input type="radio" name="beneficio" value="acima400">
-                                <span>Acima de R$400</span>
+                                <input type="radio" name="beneficio" value="nao">
+                                <span>Não</span>
                             </label>
                         </div>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">
-                            Benefícios a partir de R$400 podem seguir com a proposta.
-                        </p>
+                    </div>
+
+                    <div class="md:col-span-1">
+                        <span class="block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3">Você
+                            recebe seu benefício no Caixa Tem? <span class="text-red-500">*</span></span>
+                        <div class="grid grid-cols-2 gap-2 sm:gap-3">
+                            <label class="opcao-faixa">
+                                <input type="radio" name="caixa_tem" value="sim">
+                                <span>Sim</span>
+                            </label>
+                            <label class="opcao-faixa">
+                                <input type="radio" name="caixa_tem" value="nao">
+                                <span>Não</span>
+                            </label>
+                        </div>
                     </div>
 
                     <div class="md:col-span-2">

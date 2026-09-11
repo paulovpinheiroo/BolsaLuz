@@ -2,10 +2,6 @@ var credluz =
     (function () {
         var CHAVE_PROPOSTAS = 'credluz_propostas';
         var CHAVE_TEMA = 'credluz-tema';
-        var FAIXAS = {
-            ate350: { rotulo: 'Até R$350', minimo: 0, elegivel: false },
-            acima400: { rotulo: 'Acima de R$400', minimo: 400, elegivel: true }
-        };
 
         function mascaraCPF(campo) {
             var v = campo.value.replace(/\D/g, '');
@@ -59,13 +55,6 @@ var credluz =
             });
         }
 
-        function primeiraFaixaElegivel() {
-            for (var chave in FAIXAS) {
-                if (FAIXAS[chave].elegivel) return chave;
-            }
-            return null;
-        }
-
         function pegarPropostas() {
             try {
                 var bruto = localStorage.getItem(CHAVE_PROPOSTAS);
@@ -84,7 +73,9 @@ var credluz =
         }
 
         function montarProposta(dados) {
-            var faixa = FAIXAS[dados.beneficio] || FAIXAS[primeiraFaixaElegivel()];
+            var beneficioSim = dados.beneficio === 'sim';
+            var caixaTemSim = dados.caixaTem === 'sim';
+            var elegivel = beneficioSim && caixaTemSim;
             var proposta = {
                 id: gerarId(),
                 programa: 'bolsa_familia',
@@ -96,12 +87,13 @@ var credluz =
                     celular: dados.celular || ''
                 },
                 beneficio: {
-                    chave: dados.beneficio,
-                    faixa: faixa.rotulo,
-                    elegivel: faixa.elegivel
+                    chave: beneficioSim ? 'acima400' : 'ate350',
+                    faixa: beneficioSim ? 'Acima de R$400' : 'Até R$350',
+                    elegivel: elegivel
                 },
                 respostas: {
-                    beneficioPeloMenos400: faixa.elegivel
+                    beneficioPeloMenos400: beneficioSim ? 'sim' : 'nao',
+                    recebeNoCaixaTem: caixaTemSim ? 'sim' : 'nao'
                 },
                 status: 'LEAD',
                 enviadoEm: new Date().toISOString()
@@ -133,7 +125,8 @@ var credluz =
             var nome = document.getElementById('nome');
             var nascimento = document.getElementById('nascimento');
             var telefone = document.getElementById('telefone');
-            var beneficioEscolhido = document.querySelector('input[name="beneficio"]:checked');
+            var beneficioA400 = document.querySelector('input[name="beneficio"]:checked');
+            var caixaTem = document.querySelector('input[name="caixa_tem"]:checked');
 
             if (!cpf || cpf.value.replace(/\D/g, '').length !== 11) {
                 alert('Informe um CPF válido para continuar.');
@@ -155,8 +148,8 @@ var credluz =
                 if (telefone) telefone.focus();
                 return;
             }
-            if (!beneficioEscolhido) {
-                alert('Selecione o valor do seu benefício para continuar.');
+            if (!beneficioA400 || !caixaTem) {
+                alert('Responda todas as perguntas para continuar.');
                 return;
             }
 
@@ -165,7 +158,8 @@ var credluz =
                 nome: nome.value.trim(),
                 nascimento: nascimento.value,
                 celular: telefone.value,
-                beneficio: beneficioEscolhido.value
+                beneficio: beneficioA400.value,
+                caixaTem: caixaTem.value
             });
 
             rotear(proposta);
@@ -185,8 +179,6 @@ var credluz =
 
         return {
             iniciar: iniciar,
-            FAIXAS_ORDEM: ['ate350', 'acima400'],
-            FAIXAS: FAIXAS,
             pegarPropostas: pegarPropostas,
             salvarPropostas: salvarPropostas,
             montarProposta: montarProposta,

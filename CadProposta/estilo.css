@@ -213,6 +213,10 @@ input {
     gap: 10px;
 }
 
+.faixas-2col {
+    grid-template-columns: repeat(2, 1fr);
+}
+
 .opcao-faixa {
     display: flex;
     align-items: center;

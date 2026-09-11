@@ -87,7 +87,8 @@
                 var detalhes = document.createElement('div');
                 detalhes.className = 'proposta-detalhes';
                 detalhes.innerHTML =
-                    'Benefício: <strong>' + (p.beneficio ? p.beneficio.faixa : '—') + '</strong>' +
+                    'Benefício acima de R$400: <strong>' + (p.respostas && p.respostas.beneficioPeloMenos400 === 'sim' ? 'Sim' : 'Não') + '</strong>' +
+                    '<br>Recebe no Caixa Tem: <strong>' + (p.respostas && p.respostas.recebeNoCaixaTem === 'sim' ? 'Sim' : 'Não') + '</strong>' +
                     '<br>Enviada em: ' + new Date(p.enviadoEm).toLocaleString('pt-BR');
 
                 item.appendChild(topo);
