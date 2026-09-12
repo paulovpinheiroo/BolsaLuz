@@ -114,7 +114,7 @@ input {
     width: 100%;
     max-width: 560px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 28px 16px;
 }
 
 .hero-central {
@@ -138,7 +138,7 @@ input {
 
 .hero-central h1,
 .centro h1 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 800;
     color: var(--texto);
     margin-bottom: 8px;
@@ -224,7 +224,8 @@ input {
     gap: 8px;
     border: 2px solid var(--borda);
     border-radius: 10px;
-    padding: 13px 14px;
+    padding: 12px 12px;
+    font-size: 14px;
     cursor: pointer;
     font-weight: 700;
     color: var(--texto);
@@ -375,7 +376,7 @@ input {
 
 .proposta-topo {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 10px;
     flex-wrap: wrap;
@@ -452,23 +453,23 @@ input {
     margin-bottom: 20px;
 }
 
-@media (max-width: 500px) {
+@media (min-width: 561px) {
 
     .hero-central h1,
     .centro h1 {
-        font-size: 20px;
+        font-size: 24px;
     }
 
     .conteudo {
-        padding-top: 28px;
+        padding: 40px 20px;
     }
 
     .opcao-faixa {
-        font-size: 14px;
-        padding: 12px 12px;
+        font-size: 15px;
+        padding: 13px 14px;
     }
 
     .proposta-topo {
-        align-items: flex-start;
+        align-items: center;
     }
 }
