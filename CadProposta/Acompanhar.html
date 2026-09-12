@@ -1,49 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CredLuz | Acompanhe sua proposta</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="estilo.css">
-</head>
-<body data-base-credluz="">
 
-    <header class="topo">
-        <div class="topo-inner">
-            <div class="logo">
-                <img src="../images/logov1.webp" alt="CredLuz" class="logo-credluz" width="40">
-                <p class="logo-text">CredLuz</p>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        azul: { 50: '#f0f9ff', 100: '#e0f2fe', 800: '#1e40af', 900: '#1e3a8a', 950: '#172554' },
+                        laranja: { 500: '#f97316', 600: '#ea580c', 700: '#c2410c' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+</head>
+
+<body data-base-credluz=""
+    class="bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col font-sans antialiased">
+
+    <header class="bg-azul-900 dark:bg-slate-900">
+        <div class="w-full px-6 py-4 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5">
+                <img src="../images/logov1.webp" alt="CredLuz" class="w-9 h-9 object-contain" width="40">
+                <span class="font-bold text-2xl text-slate-100 dark:text-white">CredLuz</span>
             </div>
-            <button id="btn-tema" class="btn-tema" type="button" aria-label="Alternar tema">
+            <button id="btn-tema" type="button" aria-label="Alternar tema"
+                class="w-10 h-10 rounded-xl border-2 border-slate-500 dark:border-slate-700 text-slate-100 dark:text-slate-200 text-lg leading-none hover:border-laranja-500 transition">
                 <i class="fa-solid fa-moon"></i>
             </button>
         </div>
     </header>
 
-    <main class="conteudo">
+    <main class="flex-1 w-full max-w-lg mx-auto px-4 py-7 sm:py-10">
 
-        <div class="hero-central">
-            <div class="hero-icone"><i class="fa-solid fa-clock-rotate-left"></i></div>
-            <h1>Acompanhe sua proposta</h1>
-            <p class="sub">Suas propostas foram enviadas. Fale com um atendente para completar e acompanhar a análise.</p>
+        <div class="text-center mb-2">
+            <div
+                class="w-[72px] h-[72px] mx-auto mb-4 rounded-full bg-gradient-to-br from-laranja-500 to-laranja-700 text-white text-3xl flex items-center justify-center shadow-lg shadow-laranja-600/40">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+            </div>
+            <h1 class="text-2xl font-extrabold text-slate-800 dark:text-white leading-tight mb-2">Acompanhe sua proposta
+            </h1>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Suas propostas foram enviadas. Fale
+                com um atendente para completar e acompanhar a análise.</p>
         </div>
 
-        <ul class="lista-propostas" id="lista-propostas"></ul>
-        <p class="hint" id="lista-vazia" style="display:none">Nenhuma proposta encontrada.</p>
+        <ul id="lista-propostas" class="list-none my-6 flex flex-col gap-3"></ul>
+        <p id="lista-vazia" class="hidden my-6 text-center text-xs text-slate-500 dark:text-slate-400">Nenhuma proposta
+            encontrada.</p>
 
-        <div class="aviso-box">
-            <p>Quer finalizar sua contratação? Chame nosso atendimento no WhatsApp e tenha todo o suporte.</p>
+        <div
+            class="bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-2xl p-5 text-center mt-6 shadow-lg shadow-slate-900/5 dark:shadow-black/40">
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-5">Quer finalizar sua contratação?
+                Chame nosso atendimento no WhatsApp e tenha todo o suporte.</p>
             <a href="https://wa.me/558599999999?text=Ol%C3%A1!%20Quero%20completar%20minha%20proposta%20de%20cr%C3%A9dito%20pessoal%20no%20Bolsa%20Fam%C3%ADlia."
-                target="_blank" rel="noopener" class="btn-whats">
+                target="_blank" rel="noopener"
+                class="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:brightness-95 text-white font-extrabold py-4 rounded-xl text-base transition shadow-lg shadow-green-500/20">
                 <i class="fa-brands fa-whatsapp"></i> Falar com um atendente
             </a>
-            <a href="Proposta.html" class="btn-secundario"><i class="fa-solid fa-plus"></i> Simular nova proposta</a>
+            <a href="Proposta.html"
+                class="w-full inline-flex items-center justify-center gap-2 bg-transparent border-2 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold py-3.5 rounded-xl text-sm hover:border-laranja-600 transition mt-2.5">
+                <i class="fa-solid fa-plus"></i> Simular nova proposta
+            </a>
         </div>
     </main>
 
-    <footer class="rodape">
-        <p>Empréstimo pessoal para beneficiários do Bolsa Família &middot; Correspondente Crefaz &middot; Ambiente seguro <i class="fa-solid fa-lock"></i></p>
+    <footer class="bg-azul-900 dark:bg-slate-900 py-4 px-5 text-center">
+        <p class="text-xs text-slate-400">Empréstimo pessoal para beneficiários do Bolsa Família &middot; Correspondente
+            Crefaz &middot; Ambiente seguro <i class="fa-solid fa-lock"></i></p>
     </footer>
 
     <script src="credluz.js"></script>
@@ -68,24 +110,24 @@
 
             minhas.forEach(function (p) {
                 var item = document.createElement('li');
-                item.className = 'proposta-item';
+                item.className = 'bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-2xl p-4 flex flex-col gap-2 shadow-sm';
 
                 var topo = document.createElement('div');
-                topo.className = 'proposta-topo';
+                topo.className = 'flex items-start justify-between gap-2.5 flex-wrap';
 
                 var nome = document.createElement('span');
-                nome.className = 'proposta-nome';
+                nome.className = 'font-bold text-[15px] text-slate-800 dark:text-white';
                 nome.textContent = p.dados.nome;
 
                 var chip = document.createElement('span');
-                chip.className = 'status-chip';
-                chip.innerHTML = '<span class="ponto"></span> Aguardando atendimento';
+                chip.className = 'inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full bg-orange-100 dark:bg-laranja-900/20 border border-orange-200 dark:border-laranja-900/40 text-laranja-600 dark:text-laranja-500 whitespace-nowrap';
+                chip.innerHTML = '<span class="w-2 h-2 rounded-full bg-laranja-600 animate-pulse"></span> Aguardando atendimento';
 
                 topo.appendChild(nome);
                 topo.appendChild(chip);
 
                 var detalhes = document.createElement('div');
-                detalhes.className = 'proposta-detalhes';
+                detalhes.className = 'text-[13px] text-slate-500 dark:text-slate-400 flex flex-col gap-1';
                 detalhes.innerHTML =
                     'Benefício acima de R$400: <strong>' + (p.respostas && p.respostas.beneficioPeloMenos400 === 'sim' ? 'Sim' : 'Não') + '</strong>' +
                     '<br>Recebe no Caixa Tem: <strong>' + (p.respostas && p.respostas.recebeNoCaixaTem === 'sim' ? 'Sim' : 'Não') + '</strong>' +
@@ -98,4 +140,5 @@
         })();
     </script>
 </body>
+
 </html>

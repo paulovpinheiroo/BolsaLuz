@@ -1,7 +1,6 @@
 var credluz =
     (function () {
         var CHAVE_PROPOSTAS = 'credluz_propostas';
-        var CHAVE_TEMA = 'credluz-tema';
 
         function mascaraCPF(campo) {
             var v = campo.value.replace(/\D/g, '');
@@ -39,19 +38,20 @@ var credluz =
         }
 
         function iniciarTema() {
-            var salvo = localStorage.getItem(CHAVE_TEMA) || 'dark';
-            document.documentElement.setAttribute('data-theme', salvo);
+            var salvo = localStorage.getItem('theme');
+            var prefereEscuro = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var escuro = salvo === 'dark' || (!salvo && prefereEscuro);
+            document.documentElement.classList.toggle('dark', escuro);
 
             var botao = document.getElementById('btn-tema');
             if (!botao) return;
             var icone = botao.querySelector('i');
-            if (icone) icone.className = salvo === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            if (icone) icone.className = escuro ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
 
             botao.addEventListener('click', function () {
-                var atual = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-                document.documentElement.setAttribute('data-theme', atual);
-                localStorage.setItem(CHAVE_TEMA, atual);
-                if (icone) icone.className = atual === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                var ativo = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', ativo ? 'dark' : 'light');
+                if (icone) icone.className = ativo ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
             });
         }
 

@@ -6,60 +6,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CredLuz | Empréstimo Pessoal Bolsa Família</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="estilo.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        azul: { 50: '#f0f9ff', 100: '#e0f2fe', 800: '#1e40af', 900: '#1e3a8a', 950: '#172554' },
+                        laranja: { 500: '#f97316', 600: '#ea580c', 700: '#c2410c' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .opcao-faixa {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 700;
+            color: #475569;
+            text-align: center;
+            transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+        }
+
+        .dark .opcao-faixa {
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+
+        .opcao-faixa:hover {
+            border-color: #ea580c;
+        }
+
+        .opcao-faixa:has(input:checked) {
+            border-color: #ea580c;
+            background-color: #fff7ed;
+            color: #c2410c;
+        }
+
+        .dark .opcao-faixa:has(input:checked) {
+            border-color: #ea580c;
+            background-color: rgba(234, 88, 12, 0.15);
+            color: #fb923c;
+        }
+
+        .opcao-faixa input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
 </head>
 
-<body data-base-credluz="">
+<body data-base-credluz=""
+    class="bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col font-sans antialiased">
 
-    <header class="topo">
-        <div class="topo-inner">
-            <div class="logo">
-                <img src="../images/logov1.webp" alt="CredLuz" class="logo-credluz" width="40">
-                <p class="logo-text">CredLuz</p>
+    <header class="bg-azul-900 dark:bg-slate-900">
+        <div class="w-full px-6 py-4 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5">
+                <img src="../images/logov1.webp" alt="CredLuz" class="w-9 h-9 object-contain" width="40">
+                <span class="font-bold text-2xl text-slate-100 dark:text-white">CredLuz</span>
             </div>
-            <button id="btn-tema" class="btn-tema" type="button" aria-label="Alternar tema">
+            <button id="btn-tema" type="button" aria-label="Alternar tema"
+                class="w-10 h-10 rounded-xl border-2 border-slate-500 dark:border-slate-700 text-slate-100 dark:text-slate-200 text-lg leading-none hover:border-laranja-500 transition">
                 <i class="fa-solid fa-moon"></i>
             </button>
         </div>
     </header>
 
-    <main class="conteudo">
+    <main class="flex-1 w-full max-w-lg mx-auto px-4 py-7 sm:py-10">
 
-        <div class="hero-central">
-            <div class="hero-icone"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-            <h1>Envie sua proposta<br>de crédito pessoal</h1>
-            <p class="sub">Preencha seus dados e nosso atendente completa o restante com você.<br>Rápido, seguro e 100%
-                online.</p>
+        <div class="text-center mb-7">
+            <div
+                class="w-[72px] h-[72px] mx-auto mb-4 rounded-full bg-gradient-to-br from-laranja-500 to-laranja-700 text-white text-3xl flex items-center justify-center shadow-lg shadow-laranja-600/40">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+            </div>
+            <h1 class="text-2xl font-extrabold text-slate-800 dark:text-white leading-tight mb-2">Envie sua proposta<br>de
+                crédito pessoal</h1>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Preencha seus dados e nosso atendente
+                completa o restante com você.<br>Rápido, seguro e 100% online.</p>
         </div>
 
-        <div class="card-dados">
+        <div
+            class="bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg shadow-slate-900/5 dark:shadow-black/40">
             <form id="form-proposta">
-                <div class="campo">
-                    <label for="cpf">CPF do titular <span class="obg">*</span></label>
+                <div class="mb-4">
+                    <label for="cpf"
+                        class="block text-[13px] font-semibold text-slate-700 dark:text-slate-200 mb-1.5">CPF do titular
+                        <span class="text-red-500">*</span></label>
                     <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14"
-                        inputmode="numeric" required>
+                        inputmode="numeric" required
+                        class="w-full px-3.5 py-3 border-2 border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-950 text-[15px] text-slate-800 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-laranja-500 transition">
                 </div>
 
-                <div class="campo">
-                    <label for="nome">Nome completo <span class="obg">*</span></label>
-                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                <div class="mb-4">
+                    <label for="nome"
+                        class="block text-[13px] font-semibold text-slate-700 dark:text-slate-200 mb-1.5">Nome completo
+                        <span class="text-red-500">*</span></label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required
+                        class="w-full px-3.5 py-3 border-2 border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-950 text-[15px] text-slate-800 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-laranja-500 transition">
                 </div>
 
-                <div class="campo">
-                    <label for="nascimento">Data de aniversário <span class="obg">*</span></label>
-                    <input type="date" id="nascimento" name="nascimento" required>
+                <div class="mb-4">
+                    <label for="nascimento"
+                        class="block text-[13px] font-semibold text-slate-700 dark:text-slate-200 mb-1.5">Data de
+                        aniversário <span class="text-red-500">*</span></label>
+                    <input type="date" id="nascimento" name="nascimento" required
+                        class="w-full px-3.5 py-3 border-2 border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-950 text-[15px] text-slate-800 dark:text-white focus:outline-none focus:border-laranja-500 transition">
                 </div>
 
-                <div class="campo">
-                    <label for="telefone">Celular / WhatsApp <span class="obg">*</span></label>
+                <div class="mb-5">
+                    <label for="telefone"
+                        class="block text-[13px] font-semibold text-slate-700 dark:text-slate-200 mb-1.5">Celular /
+                        WhatsApp <span class="text-red-500">*</span></label>
                     <input type="tel" id="telefone" name="telefone" placeholder="(85) 99999-9999" maxlength="15"
-                        inputmode="numeric" required>
+                        inputmode="numeric" required
+                        class="w-full px-3.5 py-3 border-2 border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-950 text-[15px] text-slate-800 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-laranja-500 transition">
                 </div>
 
-                <fieldset class="campo campo-faixas">
-                    <legend>O valor mensal atual do seu benefício do Bolsa Família é superior a R$ 400,00? <span
-                            class="obg">*</span></legend>
-                    <div class="faixas faixas-2col">
+                <fieldset class="border-0 p-0 m-0 mb-5">
+                    <legend class="block text-[13px] font-semibold text-slate-700 dark:text-slate-200 mb-1.5">O valor
+                        mensal atual do seu benefício do Bolsa Família é superior a R$ 400,00? <span
+                            class="text-red-500">*</span></legend>
+                    <div class="grid grid-cols-2 gap-2 sm:gap-2.5">
                         <label class="opcao-faixa">
                             <input type="radio" name="beneficio" value="sim">
                             <span>Sim</span>
@@ -71,9 +161,10 @@
                     </div>
                 </fieldset>
 
-                <fieldset class="campo campo-faixas">
-                    <legend>Você recebe seu benefício no Caixa Tem? <span class="obg">*</span></legend>
-                    <div class="faixas faixas-2col">
+                <fieldset class="border-0 p-0 m-0 mb-6">
+                    <legend class="block text-[13px] font-semibold text-slate-700 dark:text-slate-200 mb-1.5">Você
+                        recebe seu benefício no Caixa Tem? <span class="text-red-500">*</span></legend>
+                    <div class="grid grid-cols-2 gap-2 sm:gap-2.5">
                         <label class="opcao-faixa">
                             <input type="radio" name="caixa_tem" value="sim">
                             <span>Sim</span>
@@ -85,21 +176,24 @@
                     </div>
                 </fieldset>
 
-                <button type="submit" class="btn-primario"><i class="fa-solid fa-calculator"></i> Simular
-                    Proposta</button>
+                <button type="submit"
+                    class="w-full inline-flex items-center justify-center gap-2 bg-laranja-600 hover:bg-laranja-700 text-white font-extrabold py-4 rounded-xl text-base transition shadow-lg shadow-laranja-600/20 active:scale-[0.99]">
+                    <i class="fa-solid fa-calculator"></i> Simular Proposta
+                </button>
             </form>
         </div>
 
-        <div class="selos">
-            <span><i class="fa-solid fa-lock"></i> Dados protegidos</span>
-            <span><i class="fa-solid fa-bolt"></i> Análise instantânea</span>
-            <span><i class="fa-solid fa-check"></i> Grátis</span>
+        <div
+            class="flex flex-wrap justify-center gap-x-5 gap-y-2 mt-6 pt-5 border-t border-slate-200 dark:border-slate-800 text-xs font-medium text-slate-500 dark:text-slate-400">
+            <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-lock"></i> Dados protegidos</span>
+            <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-bolt"></i> Análise instantânea</span>
+            <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-check"></i> Grátis</span>
         </div>
     </main>
 
-    <footer class="rodape">
-        <p>Empréstimo pessoal para beneficiários do Bolsa Família &middot; Correspondente Crefaz &middot; Ambiente
-            seguro <i class="fa-solid fa-lock"></i></p>
+    <footer class="bg-azul-900 dark:bg-slate-900 py-4 px-5 text-center">
+        <p class="text-xs text-slate-400">Empréstimo pessoal para beneficiários do Bolsa Família &middot; Correspondente
+            Crefaz &middot; Ambiente seguro <i class="fa-solid fa-lock"></i></p>
     </footer>
 
     <script src="credluz.js"></script>
